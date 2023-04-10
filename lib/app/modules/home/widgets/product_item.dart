@@ -58,7 +58,7 @@ class ProductItem extends StatelessWidget {
               )
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.only(right:18.0),
             child: IconButton(
