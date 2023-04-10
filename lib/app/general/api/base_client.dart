@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:get_storage/get_storage.dart';
 
 class BaseClient {
   static Future<BaseOptions> getBasseOptions() async {
-    
+    final storage = GetStorage();
     BaseOptions options = BaseOptions(
       followRedirects: false,
       validateStatus: (status) {
@@ -12,7 +13,8 @@ class BaseClient {
         "Accept": "application/json",
         'Content-type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
-        'Authorization': 'Bearer token',
+        'Authorization': 'Bearer ${await storage.read('token')}',
+        
       },
     );
 

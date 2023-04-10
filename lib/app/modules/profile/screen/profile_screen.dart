@@ -26,7 +26,6 @@ class ProfileScreenState extends State<ProfileScreen> {
             Stack(
               fit: StackFit.loose,
               children: [
-                
                 Container(
                   padding: const EdgeInsets.only(top: 20),
                   height: MediaQuery.of(context).size.height,
@@ -60,15 +59,17 @@ class ProfileScreenState extends State<ProfileScreen> {
                     height: MediaQuery.of(context).size.height * 0.7,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 26, 41, 85),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                      )
-                    ),
+                        color: Color.fromARGB(255, 26, 41, 85),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                        )),
                     child: Column(
                       children: [
-                        Text("Other informations", style: titleTextStyle().copyWith(color: Colors.white),)
+                        Text(
+                          "Other informations",
+                          style: titleTextStyle().copyWith(color: Colors.white),
+                        )
                       ],
                     ),
                   ),
