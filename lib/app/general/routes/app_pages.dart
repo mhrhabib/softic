@@ -30,7 +30,8 @@ class AppPages {
     ),
     GetPage(
       name: Routes.productDetails,
-      page: () => const ProductDetailScreen(),
+      page: () =>  ProductDetailScreen(),
+      arguments: Get.arguments,
     ),
     GetPage(
       name: Routes.login,
@@ -40,7 +41,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.home,
-      page: () => const HomPage(),
+      page: () =>  HomPage(),
       binding: ProductBinding(),
     ),
   ];

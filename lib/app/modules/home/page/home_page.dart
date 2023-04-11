@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:softic/app/core/widgets/app_bar.dart';
+import 'package:softic/app/general/routes/app_routes.dart';
 import 'package:softic/app/modules/home/controllers/product_controller.dart';
 
 import '../widgets/product_item.dart';
 
 class HomPage extends GetWidget<ProductController> {
-  const HomPage({super.key});
+   HomPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +23,15 @@ class HomPage extends GetWidget<ProductController> {
           ),
         ],
       ),
-      body: Obx(() => ListView.builder(
-        itemCount: controller.productList.length,
+      body: controller.obx((state) => ListView.builder(
+        itemCount: state!.length,
         itemBuilder: (context, index) {
-        return  ProductItem(product: controller.productList[index],);
-      },),)
+        return  InkWell(
+          onTap: () {
+            Get.toNamed(Routes.productDetails, arguments: state[index]);
+          },
+          child: ProductItem(product: controller.state![index],));
+      },))
     );
   }
 }

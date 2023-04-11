@@ -24,7 +24,7 @@ final storage = GetStorage();
   }
 
   int _selectedIndex = 0;
-  List items =const[
+  List items =[
     HomPage(),
     AddProdcutScreen(),
     ProfileScreen(),

@@ -25,7 +25,20 @@ class ProductRepo {
       }
     } catch (error) {
       rethrow;
-      print(error);
+      
+    }
+  }
+
+
+  Future deleteProduct(int id)async{
+    try{
+      dio.Response response = await BaseClient.delete(url: Urls.productDeleteUrl + id.toString());
+      if(response.statusCode == 200){
+        return response;
+      }
+      
+    }catch(e){
+      print(e);
     }
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:softic/app/core/values/text_style.dart';
+import 'package:softic/app/modules/home/controllers/product_controller.dart';
 import 'package:softic/app/modules/home/models/product.dart';
 import 'package:softic/app/modules/home/widgets/preview_card_image.dart';
 
@@ -17,6 +19,7 @@ class ProductItem extends StatelessWidget {
       //foregroundDecoration: BoxDecoration(color: Colors.amber),
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -43,16 +46,21 @@ class ProductItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Product name",
-                style: titleTextStyle(),
+              SizedBox(
+                width: MediaQuery.of(context).size.width *.45,
+                child: Text(
+                  product.name!,
+                  style: titleTextStyle().copyWith(
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
               Text(
-                "Brand Name",
+                product.brand!.name!,
                 style: brandTextStyle(),
               ),
               Text(
-                "Price : \$2000",
+                product.productPrice!.price!.toString(),
                 style: priceTextStyle(),
               )
             ],
@@ -61,14 +69,18 @@ class ProductItem extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right:18.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.find<ProductController>().deleteProduct(product.id!);
+                
+                print("deleted");
+              },
               icon: const Icon(
                 Icons.delete_sweep,
                 size: 30,
                 color: Colors.redAccent,
               ),
             ),
-          )
+          ),
         ],
       ),
     );
