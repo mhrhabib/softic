@@ -7,10 +7,11 @@ import 'package:softic/app/modules/profile/screen/profile_screen.dart';
 
 import '../../modules/auth/sign_in/bindings/auth_bindings.dart';
 import '../../modules/home/bindings/product_binding.dart';
+import '../../modules/profile/bindings/profile_bindings.dart';
 import 'app_routes.dart';
 
 class AppPages {
-  AppPages._();
+  
 
   static const initial = Routes.login;
 
@@ -18,10 +19,14 @@ class AppPages {
     GetPage(
       name: Routes.main,
       page: () => const MainScreen(),
+      bindings: [
+        ProfileBindings(),
+      ],
     ),
     GetPage(
       name: Routes.profile,
       page: () => const ProfileScreen(),
+      binding: ProfileBindings(),
     ),
     GetPage(
       name: Routes.productDetails,

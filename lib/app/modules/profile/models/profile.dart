@@ -1,4 +1,4 @@
-class profile {
+class Profile {
   int? id;
   String? login;
   String? firstName;
@@ -14,7 +14,7 @@ class profile {
   String? lastModifiedDate;
   List<String>? authorities;
 
-  profile(
+  Profile(
       {this.id,
       this.login,
       this.firstName,
@@ -30,7 +30,7 @@ class profile {
       this.lastModifiedDate,
       this.authorities});
 
-  profile.fromJson(Map<String, dynamic> json) {
+  Profile.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     login = json['login'];
     firstName = json['firstName'];

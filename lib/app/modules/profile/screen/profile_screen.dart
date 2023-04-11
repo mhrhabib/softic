@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:softic/app/core/values/text_style.dart';
 import 'package:softic/app/core/widgets/app_bar.dart';
+import 'package:softic/app/modules/profile/controller/profile_controller.dart';
 
 import '../widgets/profile_widget.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends GetWidget<ProfileController> {
   const ProfileScreen({super.key});
 
-  @override
-  ProfileScreenState createState() => ProfileScreenState();
-}
 
-class ProfileScreenState extends State<ProfileScreen> {
+
+
+
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +23,8 @@ class ProfileScreenState extends State<ProfileScreen> {
         "Profile",
         style: titleTextStyle(),
       )),
-      body: SingleChildScrollView(
+      body: controller.obx((state) {
+        return SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -36,17 +40,16 @@ class ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ProfileWidget(
-                        imagePath:
-                            'https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/299657791_3219232444959410_4511597146871123200_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeF4t7uEUKvsz1qrd2r4oOCgppzbAfqCzGSmnNsB-oLMZEhl6TPvuKpoD0nbZt8ACMpDd2OWmIW8jmJN_Z7_zgwZ&_nc_ohc=iXTElK7ernkAX97EETg&_nc_ht=scontent.fdac27-1.fna&oh=00_AfCq03FPL_w_nzBfKVuBHHJbK3ZJaVTG90JGggncyrya9g&oe=6438F8EC',
+                        imagePath: state!.imageUrl!, 
                         onClicked: () async {},
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        "name",
+                        state.firstName!,
                         style: titleTextStyle().copyWith(color: Colors.white),
                       ),
                       Text(
-                        "email@example.com",
+                        state.email!,
                         style: titleTextStyle().copyWith(color: Colors.white),
                       )
                     ],
@@ -78,7 +81,10 @@ class ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-      ),
+      );
+      },
+      onLoading: const Center(child: CircularProgressIndicator()),
+      onError: (error) => Text(error.toString()),),
     );
   }
 }

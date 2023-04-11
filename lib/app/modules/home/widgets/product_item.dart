@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:softic/app/core/values/text_style.dart';
 import 'package:softic/app/modules/home/models/product.dart';
+import 'package:softic/app/modules/home/widgets/preview_card_image.dart';
 
 class ProductItem extends StatelessWidget {
   ProductItem({super.key, required this.product});
@@ -35,11 +36,7 @@ class ProductItem extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network( product.image ?? 'https://picsum.photos/200/300',
-                height: 120,
-                width: 120,
-                fit: BoxFit.cover,
-              ),
+              child: PreviewCardImage(url: product.image!, errorImage: const AssetImage('images/image.png'))
             ),
           ),
           Column(
