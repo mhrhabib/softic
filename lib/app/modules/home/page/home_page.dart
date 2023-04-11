@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:softic/app/core/widgets/app_bar.dart';
+import 'package:softic/app/modules/home/controllers/product_controller.dart';
 
 import '../widgets/product_item.dart';
 
-class HomPage extends StatelessWidget {
+class HomPage extends GetWidget<ProductController> {
   const HomPage({super.key});
 
   @override
@@ -19,11 +21,11 @@ class HomPage extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: 8,
+      body: Obx(() => ListView.builder(
+        itemCount: controller.productList.length,
         itemBuilder: (context, index) {
-        return const ProductItem();
-      },),
+        return  ProductItem(product: controller.productList[index],);
+      },),)
     );
   }
 }

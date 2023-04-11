@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:softic/app/core/values/text_style.dart';
+import 'package:softic/app/modules/home/models/product.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  ProductItem({super.key, required this.product});
+
+  Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +35,7 @@ class ProductItem extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                'https://scontent.fdac27-1.fna.fbcdn.net/v/t39.30808-6/299657791_3219232444959410_4511597146871123200_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeF4t7uEUKvsz1qrd2r4oOCgppzbAfqCzGSmnNsB-oLMZEhl6TPvuKpoD0nbZt8ACMpDd2OWmIW8jmJN_Z7_zgwZ&_nc_ohc=iXTElK7ernkAX97EETg&_nc_ht=scontent.fdac27-1.fna&oh=00_AfCq03FPL_w_nzBfKVuBHHJbK3ZJaVTG90JGggncyrya9g&oe=6438F8EC',
+              child: Image.network( product.image ?? 'https://picsum.photos/200/300',
                 height: 120,
                 width: 120,
                 fit: BoxFit.cover,

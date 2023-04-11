@@ -1,4 +1,4 @@
-class product {
+class Product{
   int? id;
   String? name;
   String? barcode;
@@ -9,7 +9,7 @@ class product {
   ProductPrice ?productPrice;
   String? image;
 
-  product(
+  Product(
       {this.id,
       this.name,
       this.barcode,
@@ -20,7 +20,7 @@ class product {
       this.productPrice,
       this.image});
 
-  product.fromJson(Map<String, dynamic> json) {
+  Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     barcode = json['barcode'];
@@ -35,7 +35,7 @@ class product {
     productPrice = json['productPrice'] != null
         ? new ProductPrice.fromJson(json['productPrice'])
         : null;
-    image = json['image'];
+    image = json['image'] ?? 'https://picsum.photos/200/300';
   }
 
   Map<String, dynamic> toJson() {
@@ -147,7 +147,7 @@ class Quantity {
   int? id;
   int? quantity;
   String? unit;
-  int? unitValue;
+  double? unitValue;
   int? pastQuantity;
 
   Quantity(
@@ -174,9 +174,9 @@ class Quantity {
 
 class ProductPrice {
   int? id;
-  int? price;
-  int? unitPrice;
-  int? mrp;
+  double? price;
+  double? unitPrice;
+  double? mrp;
 
   ProductPrice({this.id, this.price, this.unitPrice, this.mrp});
 

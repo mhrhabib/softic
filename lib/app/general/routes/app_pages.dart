@@ -6,6 +6,7 @@ import 'package:softic/app/modules/product_details/screen/product_detail_screen.
 import 'package:softic/app/modules/profile/screen/profile_screen.dart';
 
 import '../../modules/auth/sign_in/bindings/auth_bindings.dart';
+import '../../modules/home/bindings/product_binding.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -30,6 +31,12 @@ class AppPages {
       name: Routes.login,
       page: () => const SignInScreen(),
       binding: AuthBindings(),
+
+    ),
+    GetPage(
+      name: Routes.home,
+      page: () => const HomPage(),
+      binding: ProductBinding(),
     ),
   ];
 }
