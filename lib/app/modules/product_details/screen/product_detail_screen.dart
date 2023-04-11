@@ -10,14 +10,14 @@ class ProductDetailScreen extends StatelessWidget {
     super.key,
   });
 
-  Product data = Get.arguments;
+  var data = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: transparentAppBar(
         title: Text(
-          data.name!,
+         " data.name!",
           style: titleTextStyle(),
         ),
       ),
@@ -27,7 +27,7 @@ class ProductDetailScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             CachedNetworkImage(
-              imageUrl: data.image!,
+              imageUrl: data['image'],
               imageBuilder: (context, imageProvider) => Container(
                 
                 height: MediaQuery.of(context).size.height * 0.3,
@@ -59,8 +59,8 @@ class ProductDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('Brand: ${data.brand!.name!}',style: titleTextStyle(),),
-                Text('Price: \$${data.productPrice!.price!}',style: titleTextStyle(),),
+                Text('Brand: ${data['brand']['name']}',style: titleTextStyle(),),
+                Text('Price: \$${data['productPrice']['price']}',style: titleTextStyle(),),
               ],
             ),
             const SizedBox(height: 24),
@@ -69,7 +69,7 @@ class ProductDetailScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Text("Product Barcode: ", style: brandTextStyle(),),
-                  Text(data.barcode!, style: brandTextStyle(),),
+                  Text(data['barcode'], style: brandTextStyle(),),
                 ],
               ),
             ),
@@ -83,7 +83,7 @@ class ProductDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(child: Text(data.description!, style: brandTextStyle(),)),
+            SizedBox(child: Text(data['description'], style: brandTextStyle(),)),
           ],
         ),
       ),

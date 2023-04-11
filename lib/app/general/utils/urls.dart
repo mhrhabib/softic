@@ -4,5 +4,6 @@ class Urls{
   static const authUrl = '${baseUrl}authenticate';
   static const producsUrl = '${baseUrl}products?page=0&size=20';
   static const profileUrl = '${baseUrl}account';
-  static const productDeleteUrl = '${baseUrl}products/'; 
+  static const productDeleteUrl = '${baseUrl}products/';
+  static const addProductUrl = "https://secure-falls-43052.herokuapp.com/api/create-products";
 }

@@ -6,19 +6,20 @@ import 'package:softic/app/modules/home/models/product.dart';
 import 'package:dio/dio.dart' as dio;
 
 class ProductRepo {
-  Future<List<Product>> getAllProduct() async {
+  Future getAllProduct() async {
     try {
       dio.Response response = await BaseClient.get(url: Urls.producsUrl);
 
       if (response.statusCode == 200) {
-        List<Product> productList = [];
-        var data = await response.data;
-        print(data);
+        List productList = [];
+        var data = await jsonEncode(response.data);
+        print("ddddd $data");
+        var list = jsonDecode(data);
 
-        for (var i in data) {
-          productList.add(Product.fromJson(i));
+        for (var i in list) {
+          productList.add(i);
         }
-
+        print(productList);
         return productList;
       } else {
         throw "error";

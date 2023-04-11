@@ -6,32 +6,39 @@ import 'package:softic/app/modules/home/controllers/product_controller.dart';
 
 import '../widgets/product_item.dart';
 
-class HomPage extends GetWidget<ProductController> {
-   HomPage({super.key});
+class HomPage extends StatelessWidget {
+  HomPage({super.key});
 
-
+  ProductController controller = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: transparentAppBar(
-        title: const Text("Products"),
-        actions: [
-          const Center(child:Text("Add Product")),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.add),
-          ),
-        ],
-      ),
-      body: controller.obx((state) => ListView.builder(
-        itemCount: state!.length,
-        itemBuilder: (context, index) {
-        return  InkWell(
-          onTap: () {
-            Get.toNamed(Routes.productDetails, arguments: state[index]);
-          },
-          child: ProductItem(product: controller.state![index],));
-      },))
+        appBar: transparentAppBar(
+          title: const Text("Products"),
+          
+        ),
+        body: Obx(() {
+          if(controller.products.contains("empty")){
+            return const Text("No data");
+          }else{
+            return RefreshIndicator(
+              onRefresh: controller.updateList,
+              child: ListView.builder(
+                  itemCount: controller.products.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.productDetails,
+                              arguments: controller.products[index]);
+                        },
+                        child: ProductItem(
+                          product: controller.products[index],
+                        ));
+                  },
+                ),
+            );
+          }
+        }),
     );
   }
 }

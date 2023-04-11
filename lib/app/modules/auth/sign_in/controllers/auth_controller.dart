@@ -33,6 +33,9 @@ class AuthContoller extends GetxController{
         var token = jsonDecode(stringData);
         print(token);
         await storage.write('token', token['id_token']);
+
+        userConntroller.clear();
+        passwordController.clear();
         Get.toNamed(Routes.main);
 
       }else{
@@ -47,6 +50,12 @@ class AuthContoller extends GetxController{
     }
   }
   
-
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    userConntroller.dispose();
+    passwordController.dispose();
+  }
 
 }

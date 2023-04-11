@@ -8,14 +8,14 @@ import 'package:softic/app/modules/home/widgets/preview_card_image.dart';
 class ProductItem extends StatelessWidget {
   ProductItem({super.key, required this.product});
 
-  Product product;
+  dynamic product;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       height: MediaQuery.of(context).size.height * .15,
-      width: MediaQuery.of(context).size.width * .90,
+      width: MediaQuery.of(context).size.width,
       //foregroundDecoration: BoxDecoration(color: Colors.amber),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -30,6 +30,7 @@ class ProductItem extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             padding: const EdgeInsets.only(left: 8),
@@ -39,7 +40,7 @@ class ProductItem extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: PreviewCardImage(url: product.image!, errorImage: const AssetImage('images/image.png'))
+              child: PreviewCardImage(url: product['image'], errorImage: const AssetImage('images/image.png'))
             ),
           ),
           Column(
@@ -49,36 +50,39 @@ class ProductItem extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width *.45,
                 child: Text(
-                  product.name!,
+                  product['name'],
                   style: titleTextStyle().copyWith(
+                    fontSize: 16,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
               Text(
-                product.brand!.name!,
-                style: brandTextStyle(),
+                product['brand']['name'],
+                style: brandTextStyle(). copyWith(
+                  fontSize: 14,
+                ),
               ),
               Text(
-                product.productPrice!.price!.toString(),
-                style: priceTextStyle(),
+                product['productPrice']['price'].toString(),
+                style: priceTextStyle().copyWith(
+                  fontSize: 16,
+                ),
               )
             ],
           ),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.only(right:18.0),
-            child: IconButton(
-              onPressed: () {
-                Get.find<ProductController>().deleteProduct(product.id!);
-                
-                print("deleted");
-              },
-              icon: const Icon(
-                Icons.delete_sweep,
-                size: 30,
-                color: Colors.redAccent,
-              ),
+          
+          IconButton(
+            onPressed: () async{
+              Get.find<ProductController>().deleteProduct(product['id']);
+              Get.find<ProductController>().products.removeWhere((element) => element['id']==product['id'],);
+              
+              print("deleted");
+            },
+            icon: const Icon(
+              Icons.delete_sweep,
+              size: 30,
+              color: Colors.redAccent,
             ),
           ),
         ],

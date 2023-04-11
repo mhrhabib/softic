@@ -15,8 +15,8 @@ class PreviewCardImage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: url,
       imageBuilder: (context, imageProvider) => Container(
-        height: 131,
-        width: 131,
+        height: MediaQuery.of(context).size.height * 0.12,
+        width: MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: Colors.black,
@@ -28,8 +28,8 @@ class PreviewCardImage extends StatelessWidget {
       ),
       placeholder: (context, url) => const CircularProgressIndicator(),
       errorWidget: (context, url, error) => Container(
-        height: 131,
-        width: 131,
+        height: MediaQuery.of(context).size.height * 0.12,
+        width: MediaQuery.of(context).size.width * 0.25,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: Colors.grey,
