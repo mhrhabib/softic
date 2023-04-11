@@ -198,27 +198,33 @@ ProductController productController = Get.put( ProductController());
             )),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.camera),
                 onPressed: () {
                   controller.getImage(ImageSource.camera);
       
                 },
-                child: const Text("Camera"),
+                label: const Text("Camera"),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
+              padding: const  EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.image),
                 onPressed: () {
                   controller.getImage(ImageSource.gallery);
                 },
-                child: const Text("Gallery"),
+                label: const Text("Gallery"),
               ),
             ),
             const SizedBox(height: 24),
              Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.purple,
+                  minimumSize: const Size(120, 40)
+                ),
                 onPressed: () async{
                   controller.addProduct();
                    await productController.updateList();
