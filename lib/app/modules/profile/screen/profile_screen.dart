@@ -59,7 +59,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                   bottom: 0,
                   child: Container(
                     padding: const EdgeInsets.only(top: 20),
-                    height: MediaQuery.of(context).size.height * 0.7,
+                    height: MediaQuery.of(context).size.height * 0.65,
                     width: MediaQuery.of(context).size.width,
                     decoration: const BoxDecoration(
                         color: Color.fromARGB(255, 26, 41, 85),

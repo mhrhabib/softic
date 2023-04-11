@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:softic/app/core/values/text_style.dart';
 import 'package:softic/app/core/widgets/app_bar.dart';
 import 'package:softic/app/general/routes/app_routes.dart';
 import 'package:softic/app/modules/home/controllers/product_controller.dart';
@@ -19,7 +20,7 @@ class HomPage extends StatelessWidget {
         ),
         body: Obx(() {
           if(controller.products.contains("empty")){
-            return const Text("No data");
+            return Center(child:  Text("No data", style: titleTextStyle(),));
           }else{
             return RefreshIndicator(
               onRefresh: controller.updateList,
