@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:softic/app/modules/home/models/product.dart';
 import 'package:softic/app/modules/home/repository/product_repo.dart';
 
 class ProductController extends GetxController {
@@ -14,7 +13,6 @@ class ProductController extends GetxController {
     Hive.init(dir.path);
     box = await Hive.openBox('productList');
     return;
-    
   }
 
   Future putData(data) async {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:softic/app/core/values/text_style.dart';
 import 'package:softic/app/core/widgets/app_bar.dart';
-import 'package:softic/app/modules/home/models/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   ProductDetailScreen({
@@ -17,7 +16,7 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: transparentAppBar(
         title: Text(
-         " data.name!",
+          " data.name!",
           style: titleTextStyle(),
         ),
       ),
@@ -29,9 +28,8 @@ class ProductDetailScreen extends StatelessWidget {
             CachedNetworkImage(
               imageUrl: data['image'],
               imageBuilder: (context, imageProvider) => Container(
-                
                 height: MediaQuery.of(context).size.height * 0.3,
-                width: MediaQuery.of(context).size.width *0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Colors.black,
@@ -44,7 +42,7 @@ class ProductDetailScreen extends StatelessWidget {
               placeholder: (context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => Container(
                 height: MediaQuery.of(context).size.height * 0.3,
-                width: MediaQuery.of(context).size.width *0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   color: Colors.grey,
@@ -59,31 +57,49 @@ class ProductDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text('Brand: ${data['brand']['name']}',style: titleTextStyle(),),
-                Text('Price: \$${data['productPrice']['price']}',style: titleTextStyle(),),
+                Text(
+                  'Brand: ${data['brand']['name']}',
+                  style: titleTextStyle(),
+                ),
+                Text(
+                  'Price: \$${data['productPrice']['price']}',
+                  style: titleTextStyle(),
+                ),
               ],
             ),
             const SizedBox(height: 24),
             Padding(
-              padding: const EdgeInsets.only(left:28.0),
+              padding: const EdgeInsets.only(left: 28.0),
               child: Row(
                 children: [
-                  Text("Product Barcode: ", style: brandTextStyle(),),
-                  Text(data['barcode'], style: brandTextStyle(),),
+                  Text(
+                    "Product Barcode: ",
+                    style: brandTextStyle(),
+                  ),
+                  Text(
+                    data['barcode'],
+                    style: brandTextStyle(),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 24),
             Padding(
-              padding: const EdgeInsets.only(left:28.0),
+              padding: const EdgeInsets.only(left: 28.0),
               child: Row(
                 children: [
-                  Text("Product Desciption: ", style: brandTextStyle(),),
-                  
+                  Text(
+                    "Product Desciption: ",
+                    style: brandTextStyle(),
+                  ),
                 ],
               ),
             ),
-            SizedBox(child: Text(data['description'], style: brandTextStyle(),)),
+            SizedBox(
+                child: Text(
+              data['description'],
+              style: brandTextStyle(),
+            )),
           ],
         ),
       ),

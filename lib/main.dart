@@ -11,11 +11,11 @@ void main() async {
   await GetStorage.init();
   await Hive.initFlutter();
 
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+  MyApp({super.key});
 
   final storage = GetStorage();
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: storage.read('token') != null ? Routes.main : AppPages.initial,
+      initialRoute: Routes.main,
       getPages: AppPages.routes,
     );
   }

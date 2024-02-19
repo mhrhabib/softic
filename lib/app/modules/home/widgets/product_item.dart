@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:softic/app/core/values/text_style.dart';
 import 'package:softic/app/modules/home/controllers/product_controller.dart';
-import 'package:softic/app/modules/home/models/product.dart';
 import 'package:softic/app/modules/home/widgets/preview_card_image.dart';
 
 class ProductItem extends StatelessWidget {
